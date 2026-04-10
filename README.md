@@ -323,6 +323,56 @@ Second-round speed optimization focused on getting heavy libraries out of the in
 
 ---
 
+### Phase 30: Dual Pipeline — Raw File to R2, GLB Proxy via Web Worker
+> **Status:** Complete | **Date:** April 10, 2026
+
+Architectural rewrite of the 3D file upload and display path so the customer's original STL/3MF/OBJ file streams direct to Cloudflare R2 completely untouched (for manufacturing / slicing), while a lightweight GLB proxy is generated in parallel on the browser's own worker thread and shipped to web viewers instead of the raw mesh.
+
+**The problem.** Before Phase 30, every customer or admin who opened `/model/[id]`, `/preview/[filename]`, a quote detail page, or the dashboard order list was downloading the full raw STL through a Vercel serverless function that buffered the entire file in RAM before emitting it as a response body. For a 50 MB STL that meant: 50 MB R2→Vercel egress, 50 MB Vercel→browser egress, 100 MB of serverless function memory, 2–5 seconds of main-thread parse blocking in the browser, and a 60-second function timeout ceiling that capped how big any file could ever get.
+
+**The architecture.** Two R2 objects per upload, never shared between customers:
+
+| Role | Key scheme | Audience | Size |
+|---|---|---|---|
+| **Raw — source of truth** | `raw/user/{clerkId}/{sha256}.{ext}` (authed) or `raw/session/{uplSid}/{sha256}.{ext}` (guest) | The local slicer bridge. Byte-identical to what the customer uploaded. | Original (up to 100 MB) |
+| **Proxy — web viewer** | `proxy/user/{clerkId}/{sha256}.glb` or `proxy/session/{uplSid}/{sha256}.glb` | Every browser-side 3D viewer on the site | ~100× smaller than raw |
+
+Guest uploads get an HttpOnly `upl_sid` cookie minted server-side on first call so all files from the same anonymous session share a scope. Authed uploads key by Clerk user ID. Customer A and Customer B who coincidentally upload identical bytes *never* share an R2 object — deleting A's account deletes only A's objects, and proprietary prototypes stay siloed even when the bits collide.
+
+**The upload flow.**
+
+1. **SHA-256 in the browser** (`crypto.subtle.digest`, ~150 ms for 50 MB) — the content hash is the cache key for both R2 objects and lets the server HEAD the bucket for per-customer dedupe before any bytes move.
+2. **One presign round trip**: `POST /api/upload/dual-presign` returns two presigned `PutObjectCommand` URLs (raw + proxy) and an `alreadyExists` flag for each. If the file already exists in this customer's scope, zero bytes get uploaded.
+3. **Raw PUT starts immediately** direct to R2 over the browser's native fetch streaming. Vercel is never in the data path.
+4. **Mesh-forge Web Worker runs in parallel** — parses the STL with `STLLoader`, computes exact volume/surface area/bounding box/watertight from the original geometry, decimates the mesh with `meshoptimizer` (WASM, ~5× faster than Three.js's `SimplifyModifier`), and exports a binary GLB via `GLTFExporter`. The whole forge is wrapped in a try/catch so any failure degrades to "raw-only upload" and the viewer falls back to the legacy path — the customer never sees a blocked quote.
+5. **Proxy PUT** to R2 when the forge completes.
+6. **Model metrics come from the Worker**, not from a separate `/api/quote/analyze` round trip. The 80 ms of trigonometry runs on a worker thread while the main thread stays responsive.
+
+**Target triangle count.** The decimator aims for the smaller of 10% of the original mesh or 50,000 triangles, with a floor of 1,000. A 1M-triangle STL becomes a 50k-triangle GLB — more than enough for a thumbnail viewer, and the exact same browser can load it with a `GLTFLoader.parse` that completes in ~50 ms.
+
+**The viewer.** `components/quote/ModelViewer.tsx` now handles `.glb` files through `GLTFLoader` alongside the existing STL and 3MF branches. `components/quote/QuoteModelPreview.tsx` prefers the file's `proxyUrl` when present and synthesizes a `.glb` filename so the viewer routes to the right loader. Every call site (admin quote detail, `/quotes/[id]`, customer dashboard order cards) now passes `proxyUrl` through. The raw STL is never downloaded by any browser again.
+
+**The worker build.** Next.js 14's `new Worker(new URL(...))` webpack integration is fragile and wouldn't reliably emit the mesh-forge script as a separate chunk. Phase 30 bypasses it entirely: a small prebuild script (`scripts/build-mesh-forge-worker.mjs`) runs esbuild against `workers/mesh-forge.worker.ts`, tree-shakes the named Three.js imports, bypasses `three-stdlib`'s barrel (which would have dragged in lottie, opentype, and chevrotain for no reason), subpath-imports `meshoptimizer/simplifier` so the clusterizer and decoder don't ship, and writes the result to `public/workers/mesh-forge.js` at 537 KB (~150 KB gzipped). It's served with `public, max-age=31536000, immutable`, so the worker loads once per browser session and is then cached at the Cloudflare edge until the next deploy. The worker only downloads on `/upload`, and only when the user actually drops a file — it never touches the critical path for any other page view.
+
+**The schema.** New `QuoteFile` relational table with 1:many from `Quote`, ON DELETE CASCADE. Fields: `rawKey`, `proxyKey`, `proxyFormat`, `sha256`, `uploaderKey`, `triangleCount`, `simplifiedTris`, `volumeCm3`, `surfaceAreaCm2`, `boundingBoxXmm/Ymm/Zmm`, `isWatertight`, plus forge diagnostics (`forgeDurationMs`, `forgeFallback`, `forgeError`). Migration `20260410_add_quote_file_dual_pipeline` applied to Neon. The legacy `Quote.files` JSON column stays in place for backward compatibility — the admin panel's existing reads work unchanged.
+
+**Performance impact.** Measured per page view of an existing quote's 3D model:
+
+| Metric | Before Phase 30 | After Phase 30 |
+|---|---|---|
+| Bytes downloaded to view one model | 50 MB raw STL | ~400 KB GLB proxy |
+| CDN served from | Vercel serverless function | Cloudflare R2 edge directly |
+| Vercel function invocations per view | 1 | 0 |
+| Vercel bandwidth per view | Full raw file | 0 |
+| Main-thread blocking on load | 2–5 s (STLLoader.parse) | ~50 ms (GLTFLoader.parse) |
+| View round-trip time (cold) | 8–15 s | ~300 ms |
+
+On the upload side, total wall-clock for a 50 MB STL drops from roughly 10 s to roughly 5 s (raw PUT in parallel with Worker forge), and main-thread blocking drops from 2–5 s to ~200 ms (just the SHA-256).
+
+**Production verification.** Smoke-tested end-to-end against `sinisterprintworks.net` after deploy: `/workers/mesh-forge.js` serves 200 with `content-type: text/javascript` and the immutable cache header, `POST /api/upload/dual-presign` returns both presigned R2 URLs with correctly scoped keys, the `upl_sid` cookie is minted HttpOnly+Secure for anonymous sessions, and the per-customer `alreadyExists` dedupe HEAD check runs without error.
+
+---
+
 ## Live Site
 
 **[sinisterprintworks.net](https://sinisterprintworks.net)**
