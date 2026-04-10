@@ -271,6 +271,58 @@ Major gamification expansion:
 
 ---
 
+### Phase 28: Performance Optimization — Core Web Vitals Pass 1
+> **Status:** Complete | **Date:** April 10, 2026
+
+End-to-end audit and first-round speed optimization of the entire customer surface. Focus on shipping less JavaScript, eliminating GPU-heavy effects, and converting runtime work to build-time wherever possible.
+
+**Config consolidation.** Resolved a conflict between `next.config.js` and `next.config.ts` — the `.ts` file had `unoptimized: true`, silently disabling Next.js image optimization across the entire site. Deleted the `.ts` file and consolidated every setting into `next.config.js`.
+
+**Image optimization re-enabled.** Removed the `unoptimized` flag, migrated legacy `images.domains` to `images.remotePatterns` (Next.js 15 compatible), and converted remaining raw `<img>` tags on `/showcase` and `/model/[id]` to `next/image`. Character portraits now flow through the WebP/AVIF/responsive-size pipeline.
+
+**Package import tree-shaking.** Added `experimental.optimizePackageImports` for `lucide-react`, `framer-motion`, `@react-three/drei`, and `three-stdlib`. The entire Lucide icon library (564 icons) no longer ships — only the handful actually used.
+
+**Homepage converted to React Server Component.** The homepage had `'use client'` at the top but used zero hooks, zero state, and zero browser APIs. Same story for `PrinterShowcase` and the `Footer`. Converted all three to server components; the `@keyframes fadeInUp` block that had been embedded in `styled-jsx` was moved to `globals.css` so the page could render at the server.
+
+**Ambient background rewrite.** The root layout shipped two `blur-[120px]` / `blur-[150px]` divs with `mix-blend-screen` that re-rendered on every page. Those were replaced with a static CSS `radial-gradient` — same visual, zero per-frame GPU compositing cost (especially on mobile). The page-local `blur-[100px]` effect behind `/showcase` was replaced the same way.
+
+**ISR for marketing pages.** `/about` and `/vision` now use `export const revalidate = 86400` (24h ISR), and the five legal pages (`privacy`, `terms`, `dmca`, `disclaimer`, `confidentiality`) are compiled to `force-static` HTML. These pages now serve from the CDN edge cache instead of cold-starting a serverless function on every request.
+
+**CDN cache headers.** `vercel.json` now sets `public, max-age=31536000, immutable` on `/assets/**` and on the static binary file types (`.glb`, `.gltf`, `.png`, `.jpg`, `.webp`, `.svg`, `.woff2`, …). Gamification reference endpoints (`/api/gamification/chest/types`, `/api/gamification/characters`) get `s-maxage=3600` with 24h `stale-while-revalidate`.
+
+**Vercel preview pipeline unblocked.** Discovered that every prior deploy was `target: "production"` — preview deployments had never actually worked on this project because Clerk env vars (`NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`, `CLERK_SECRET_KEY`, `NEXT_PUBLIC_CLERK_SIGN_IN_URL`) were scoped only to Production. Copied those three vars into Preview scope so every future deploy can be verified on a real URL before promotion.
+
+**Real-browser verification.** Wrote a Playwright spec (`e2e/perf-verify.spec.ts`) that, against a fresh Vercel preview, confirmed the homepage renders with zero heavy CSS blurs, the `/showcase` character portraits load through `/_next/image` optimization, and nothing regressed.
+
+---
+
+### Phase 29: Performance Optimization — Bundle Splitting & Lazy Loading
+> **Status:** Complete | **Date:** April 10, 2026
+
+Second-round speed optimization focused on getting heavy libraries out of the initial JavaScript bundle. Every byte deferred is a byte the customer does not download to see the hero section.
+
+**Three.js audit.** Walked every import path from every page back through the component graph to find anything that might pull `three`, `@react-three/fiber`, `@react-three/drei`, or `three-stdlib` into a page's initial bundle. Result: the existing code was already correct — every 3D viewer (`/model/[id]`, `/upload`, `/preview/[filename]`) uses `next/dynamic({ ssr: false })`. Phase 29 did not touch any of that; it was already clean.
+
+**Framer Motion lazy-load.** `ChestOpeningAnimation` (the chest-opening celebration with particle bursts and item descent) is the only consumer of `framer-motion` (~300 KB) and was statically imported at the top of `/dashboard/shop`. Wrapped it in `next/dynamic({ ssr: false })` with a loading skeleton. Framer Motion now only downloads when a user actually returns from a completed chest purchase — the common case (browse the shop, leave) never ships the library at all.
+
+**Lazy-loaded ScrollStory.** The homepage's scroll-driven narrative component is 1,051 lines of pure JavaScript. Wrote a new `LazyScrollStory.tsx` client wrapper that combines `next/dynamic` (for code-splitting) with `IntersectionObserver` (for deferred trigger, 600 px root margin). The wrapper renders a height-matched placeholder until the user scrolls within range, then fetches the ScrollStory chunk and mounts it. Above-the-fold content is not blocked by its parse/compile cost.
+
+**Reusable `<LazySection>` primitive.** Extracted the IntersectionObserver pattern into `components/ui/LazySection.tsx` for future below-the-fold content (gamification panels, admin tables, 3D thumbnails).
+
+**Duplicate `ModelViewer3D` files — left alone.** Discovered `components/ModelViewer3D.tsx` (in use) and `components/3d/ModelViewer3D.tsx` (orphaned). The orphan is queued for P2/P4 wiring per the project charter — deleting it would destroy intentional future work, and tree-shaking already removes it from the bundle. No action needed.
+
+**Measured impact (Next.js build output, preview vs. production baseline):**
+
+| Route | Before | After | First-Load Δ | Route JS Δ |
+|---|---|---|---|---|
+| `/` (homepage) | 9.31 kB / 150 kB | **1.45 kB** / **142 kB** | **−8 kB** | **−84 %** |
+| `/dashboard/shop` | 51.20 kB / 169 kB | **9.98 kB** / **128 kB** | **−41 kB** | **−80 %** |
+| `/showcase` | 6 kB / 154 kB | 6 kB / 154 kB | 0 | 0 |
+
+**Real-browser verification.** A second Playwright spec (`e2e/perf-phase2.spec.ts`) runs against a Vercel preview and captures every `<script>` request. It confirms that (1) the homepage's initial load does not include the ScrollStory chunk, (2) scrolling triggers exactly one new chunk fetch and mounts the component, (3) `/showcase` still renders all 34 character portraits with zero canvas elements and zero heavy blurs, and (4) no Framer Motion chunk is ever fetched on a cold homepage load.
+
+---
+
 ## Live Site
 
 **[sinisterprintworks.net](https://sinisterprintworks.net)**
