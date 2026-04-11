@@ -1,12 +1,17 @@
-# Sinister Printworks Website
+# 🔥 Sinister Printworks Website
 
-**Full-stack 3D printing e-commerce platform — built from the ground up.**
+**Full-stack 3D printing e-commerce platform — forged from the ground up.**
 
-[![Live Site](https://img.shields.io/badge/Live%20Site-sinisterprintworks.net-FF4500?style=for-the-badge&logo=vercel&logoColor=white)](https://sinisterprintworks.net)
+[![Live Site](https://img.shields.io/badge/LIVE-sinisterprintworks.net-FF4500?style=for-the-badge&logo=vercel&logoColor=white&labelColor=0D0D0D)](https://sinisterprintworks.net)
+[![Phases](https://img.shields.io/badge/PHASES-43_COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D)](#build-log)
+[![Stack](https://img.shields.io/badge/STACK-Next.js_16_·_React_19-FF4500?style=for-the-badge&labelColor=0D0D0D)](#tech-stack)
+[![Build](https://img.shields.io/badge/BUILDER-Turbopack-FF4500?style=for-the-badge&labelColor=0D0D0D)]()
+[![Deploys](https://img.shields.io/badge/DEPLOYS-12_GREEN-FF4500?style=for-the-badge&labelColor=0D0D0D)]()
+[![Mesh Forge](https://img.shields.io/badge/MESH_FORGE-Rust_+_WASM-FF4500?style=for-the-badge&labelColor=0D0D0D)]()
 
 ---
 
-## About
+## ⚒️ About
 
 Sinister Printworks is a 3D printing services company offering custom prints, prototyping, and on-demand manufacturing. This repository is the public build log for the company website — a full-stack application with 33+ pages, 90+ API endpoints, and 22 database models.
 
@@ -14,7 +19,7 @@ The source code is maintained in a separate private repository with invitation-o
 
 ---
 
-## Platform Statistics
+## 📊 Platform Statistics
 
 | Metric | Count |
 |--------|-------|
@@ -27,7 +32,7 @@ The source code is maintained in a separate private repository with invitation-o
 
 ---
 
-## Tech Stack
+## ⚙️ Tech Stack
 
 | Technology | Purpose |
 |---|---|
@@ -52,171 +57,179 @@ The source code is maintained in a separate private repository with invitation-o
 
 ---
 
-## Build Log
+## 🔨 Build Log
+
+### Status Legend
+
+![Complete](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) Shipped to production
+![In Progress](https://img.shields.io/badge/STATUS-IN_PROGRESS-FFA500?style=for-the-badge&labelColor=0D0D0D) Currently being built
+![Deferred](https://img.shields.io/badge/STATUS-DEFERRED-8B0000?style=for-the-badge&labelColor=0D0D0D) Blocked or postponed for documented reasons
+
+---
 
 ### Phase 1: Repository & Infrastructure Setup
-> **Status:** Complete | **Date:** April 4, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_4_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 Private GitHub repository with `.gitignore` for secrets. Vercel CI/CD integration with automatic deployments on push. Environment variable management across development, preview, and production.
 
 ---
 
 ### Phase 2: Social Media Integration
-> **Status:** Complete | **Date:** April 4, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_4_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 Connected Instagram, Pinterest, and YouTube profiles in website footer with verified brand URLs.
 
 ---
 
 ### Phase 3: Search Engine Branding (Favicon & Open Graph)
-> **Status:** Complete | **Date:** April 4, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_4_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 Custom favicon set, Open Graph images, apple-touch-icon, and comprehensive SEO metadata in the root layout for Google Search and social media link previews.
 
 ---
 
 ### Phase 4: Vision & Goals Page
-> **Status:** Complete | **Date:** April 4, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_4_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 `/vision` page with mission statement, core values, and Coming Soon product roadmap (SLS nylon, full-color printing, CNC machining). Equipment contribution CTAs.
 
 ---
 
 ### Phase 5: Equipment Contribution System
-> **Status:** Complete | **Date:** April 4, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_4_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 `/contribute` page with interactive progress bars for equipment fundraising goals (Formlabs Fuse 1+, Bambu Lab P2S, Full-Color Printer, CNC Laser Cutter). Stripe Checkout for donations. 25% revenue allocation from sales/quotes. Contribution tracking and impact descriptions.
 
 ---
 
 ### Phase 6: Legal Disclaimer (IP Liability)
-> **Status:** Complete | **Date:** April 4, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_4_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 `/legal/disclaimer` covering intellectual property responsibility, DMCA compliance, common carrier doctrine, and limitation of liability.
 
 ---
 
 ### Phase 7: Confidentiality Agreement (NDA) System
-> **Status:** Complete | **Date:** April 4, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_4_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 Bilateral NDA with Stripe-gated purchase flow ($100-$1000 pricing tiers based on order value). E-signature capture via SignatureCanvas component. Unique NDA numbering (NDA-YYYYMMDD-XXXX). Status tracking and 5-year term. Routes: `/nda`, `/legal/confidentiality`.
 
 ---
 
 ### Phase 8: Public Build Log
-> **Status:** Complete | **Date:** April 4, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_4_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 This repository — transparent build history for portfolio and investor reference.
 
 ---
 
 ### Phase 9: 3D Model Meta-Search Engine
-> **Status:** Complete | **Date:** April 5, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_5_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 `/search` page with multi-platform search across Printables, Cults3D, Thangs, Thingiverse, and MyMiniFactory. Powered by Serper.dev API. BM25 ranking, source filtering, pagination, and save-to-archive functionality.
 
 ---
 
 ### Phase 10: Quote-to-Fulfillment Pipeline
-> **Status:** Complete | **Date:** April 5, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_5_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 `/upload` page with drag-and-drop STL/3MF upload. Automatic model analysis (volume, weight, surface area, watertight check). Material selection with color palettes. Multi-color AMS support with purge fees. Instant price estimation. Guest checkout without account requirement. Real-time 3D preview via Three.js.
 
 ---
 
 ### Phase 11: Admin Dashboard & Quote Management
-> **Status:** Complete | **Date:** April 6, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_6_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 `/admin` with full quote lifecycle management. Status pipeline: PENDING_REVIEW → PRICED → PAID → SLICING → PRINTING → QUALITY_CHECK → AWAITING_SHIPMENT → SHIPPED → FULFILLED. QuotePricer for manual pricing override. FulfillmentPanel for production tracking. Bulk quote operations. Material stock alerts.
 
 ---
 
 ### Phase 12: Stripe Payment Integration
-> **Status:** Complete | **Date:** April 6, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_6_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 Checkout sessions, payment intents, and webhook handling (checkout.session.completed, charge.refunded). Automatic quote status updates on payment. Stripe customer ID tracking. Invoice generation. Guest checkout support for unauthenticated users.
 
 ---
 
 ### Phase 13: Shipping Pipeline (EasyPost)
-> **Status:** Complete | **Date:** April 6, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_6_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 Real-time shipping rate calculation, automatic label generation, webhook tracking updates. Carrier integration (USPS, UPS, FedEx). Address verification. Box dimension calculation from STL model bounds. Manual label fallback for reliability.
 
 ---
 
 ### Phase 14: 3D Visualization Engine
-> **Status:** Complete | **Date:** April 6, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_6_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 Real-time STL/3MF viewer using Three.js, @react-three/fiber, and @react-three/drei. ModelViewer3D and ModelViewerEngine components. Interactive rotation/zoom, color preview for multi-color prints, model bounds visualization. Mobile-responsive rendering.
 
 ---
 
 ### Phase 15: Material Inventory Management
-> **Status:** Complete | **Date:** April 7, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_7_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 `/admin/inventory` with spool tracking (brand, type, color, weight remaining percentage). Status management (in-stock, low, out-of-stock, on-order). Shelf and AMS slot location tracking. Amazon reorder links. Low-stock alerts on admin dashboard.
 
 ---
 
 ### Phase 16: Archive & Print Lists
-> **Status:** Complete | **Date:** April 7, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_7_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 `/archive` with user-created print lists. Add models from search results. Public/private visibility toggle. Unique share tokens for public list access. List management (name, description, items).
 
 ---
 
 ### Phase 17: NDA System Overhaul
-> **Status:** Complete | **Date:** April 8, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_8_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 Enhanced `/nda` with dual-party e-signature workflow (customer signs → owner counter-signs). SignatureCanvas component for digital signatures. PDF generation and download. Status lifecycle: PENDING_PAYMENT → PENDING_CUSTOMER_SIGNATURE → PENDING_OWNER_SIGNATURE → ACTIVE → EXPIRED/VOIDED. Admin NDA management at `/admin/ndas`.
 
 ---
 
 ### Phase 18: DMCA Policy Page
-> **Status:** Complete | **Date:** April 7, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_7_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 `/legal/dmca` with registered agent information and DMCA compliance procedures.
 
 ---
 
 ### Phase 19: Privacy Policy & Terms of Service
-> **Status:** Complete | **Date:** April 7, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_7_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 `/legal/privacy` covering data collection, model storage, and payment processing. `/legal/terms` with service terms and conditions.
 
 ---
 
 ### Phase 20: File Security Pipeline
-> **Status:** Complete | **Date:** April 7, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_7_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 VirusTotal integration for malware scanning of uploaded 3D files. Cloudflare R2 storage with presigned URLs for secure upload/download. File hash tracking for deduplication. Automatic 30-day deletion. Encryption-at-rest.
 
 ---
 
 ### Phase 21: Bambu Lab Printer Integration
-> **Status:** Complete | **Date:** April 7, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_7_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 MQTT cloud connectivity via Bambu.cloud for live printer status monitoring. Remote job monitoring. Multi-color AMS support with automatic color palette mapping. OrcaSlicer command-line integration for G-code generation.
 
 ---
 
 ### Phase 22: Homepage Overhaul & Eagle Rising Animation
-> **Status:** Complete | **Date:** April 7, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_7_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 Apple-style ScrollStory component with scroll-driven animations. PrinterShowcase and MaterialsScrollStory components. Heraldic eagle SVG with animated entrance. Dark aesthetic with Sinister Orange/Red color scheme. Trust bar and "How It Works" 3-step flow.
 
 ---
 
 ### Phase 23: Two-Sided Dashboards
-> **Status:** Complete | **Date:** April 8, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_8_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 Customer "Command Center" at `/dashboard` with work order mini stepper (WorkOrderMiniStepper), quote tracking, NDA section, and order history. Admin command center with full quote management, fulfillment, and inventory tools. Dark-themed authentication pages via Clerk.
 
 ---
 
 ### Phase 24: Gamification Loyalty System
-> **Status:** Complete | **Date:** April 8, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_8_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 10-tier rank progression system:
 
@@ -238,21 +251,21 @@ Points earned from purchases (1 pt/$1), donations (2 pt/$1), and social proof (2
 ---
 
 ### Phase 25: Automated Email Pipeline
-> **Status:** Complete | **Date:** April 8, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_8_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 Resend.io integration for welcome emails, quote confirmations, payment receipts, shipping notifications, and rank-up congratulations. Bi-weekly promotional cron job (1st and 15th of each month) with personalized tier progress updates, active discount codes, and engagement CTAs.
 
 ---
 
 ### Phase 26: About Us Page
-> **Status:** Complete | **Date:** April 8, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_8_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 `/about` with MaterialsScrollStory component showcasing manufacturing capabilities and company information.
 
 ---
 
 ### Phase 27: Gamification V2 — Characters, Chests, Boosts & Inventory
-> **Status:** Complete | **Date:** April 9, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_9_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 Major gamification expansion:
 
@@ -273,7 +286,7 @@ Major gamification expansion:
 ---
 
 ### Phase 28: Performance Optimization — Core Web Vitals Pass 1
-> **Status:** Complete | **Date:** April 10, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_10_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 End-to-end audit and first-round speed optimization of the entire customer surface. Focus on shipping less JavaScript, eliminating GPU-heavy effects, and converting runtime work to build-time wherever possible.
 
@@ -298,7 +311,7 @@ End-to-end audit and first-round speed optimization of the entire customer surfa
 ---
 
 ### Phase 29: Performance Optimization — Bundle Splitting & Lazy Loading
-> **Status:** Complete | **Date:** April 10, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_10_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 Second-round speed optimization focused on getting heavy libraries out of the initial JavaScript bundle. Every byte deferred is a byte the customer does not download to see the hero section.
 
@@ -325,7 +338,7 @@ Second-round speed optimization focused on getting heavy libraries out of the in
 ---
 
 ### Phase 30: Dual Pipeline — Raw File to R2, GLB Proxy via Web Worker
-> **Status:** Complete | **Date:** April 10, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_10_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 Architectural rewrite of the 3D file upload and display path so the customer's original STL/3MF/OBJ file streams direct to Cloudflare R2 completely untouched (for manufacturing / slicing), while a lightweight GLB proxy is generated in parallel on the browser's own worker thread and shipped to web viewers instead of the raw mesh.
 
@@ -375,7 +388,7 @@ On the upload side, total wall-clock for a 50 MB STL drops from roughly 10 s to 
 ---
 
 ### Phase 31: Meta-Search Engine Removal — Pivot to Upload-Only
-> **Status:** Complete | **Date:** April 9, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_9_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 The original Phase 9 meta-search engine — multi-platform model discovery powered by Serper.dev across Printables, Cults3D, Thangs, Thingiverse, and MyMiniFactory — was deprecated in favor of an exclusively upload-and-print business model. Customers bring their own files; the site no longer brokers third-party model discovery.
 
@@ -386,7 +399,7 @@ The original Phase 9 meta-search engine — multi-platform model discovery power
 ---
 
 ### Phase 32: Forge Velocity Protocol — Phase 0 Baseline Instrumentation
-> **Status:** Complete | **Date:** April 9, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_9_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 Kicked off the **Forge Velocity Protocol** — a multi-phase performance optimization initiative covering the entire customer surface. Phase 0 was the discovery and measurement layer: nothing user-visible changed, but the project gained the tooling to know where it stood.
 
@@ -401,7 +414,7 @@ Kicked off the **Forge Velocity Protocol** — a multi-phase performance optimiz
 ---
 
 ### Phase 33: Phase 1 — Asset Janitor + Image Optimization → −94% LCP
-> **Status:** Complete | **Date:** April 9, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_9_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 The biggest single user-visible win of the entire protocol, delivered in two sub-phases.
 
@@ -416,7 +429,7 @@ The biggest single user-visible win of the entire protocol, delivered in two sub
 ---
 
 ### Phase 34: Phase 2 — Edge Runtime + RSC Co-Location
-> **Status:** Complete | **Date:** April 9, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_9_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 Migrated three pure-compute API routes (`/api/printers/status`, `/api/quote/estimate`, `/api/vitals`) to the Vercel **edge runtime**. Cold-start TTFB on those routes dropped from 200–400 ms to under 50 ms because the edge runtime skips the Node.js cold-boot entirely. The quote-form page calls `/api/quote/estimate` on every file blur, so the latency win was the most user-perceptible part of the migration.
 
@@ -427,7 +440,7 @@ Migrated three pure-compute API routes (`/api/printers/status`, `/api/quote/esti
 ---
 
 ### Phase 35: Phase 3 — Streaming TTFB via Shell/Island Split + Speculation Rules
-> **Status:** Complete | **Date:** April 9, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_9_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 Split `/dashboard` into a static `<Header>` shell that flushes immediately and a `<DashboardContent>` island wrapped in `<Suspense>` that streams the Prisma + Clerk + gamification data after. Before the split, the page blocked on `auth() → getOrCreateUser → prisma.user.findUnique → Promise.all([gamProfile, submissions, inventory]) → prisma.quote.findMany → prisma.nda.findMany` before any HTML flushed; after the split, the shell + skeleton paint immediately and the streamed content replaces the skeleton with zero cumulative layout shift.
 
@@ -438,7 +451,7 @@ Split `/dashboard` into a static `<Header>` shell that flushes immediately and a
 ---
 
 ### Phase 36: Phase 4 — Framework Upgrade (Next 15 + React 19 + Clerk 6 + R3F 9)
-> **Status:** Complete | **Date:** April 9, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_9_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 Major-version bumps across the entire React + framework toolchain, performed in a single coordinated merge.
 
@@ -459,7 +472,7 @@ Major-version bumps across the entire React + framework toolchain, performed in 
 ---
 
 ### Phase 37: Phase 5 — Minimal PWA + Phase 7 Perf Guard CI
-> **Status:** Complete | **Date:** April 9, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_9_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 **Minimal PWA.** Added `app/manifest.ts` and a viewport `theme-color` so the site is installable on Android home screens and iOS share sheets without dragging in a service worker or offline shell. Just enough to qualify as a PWA without the maintenance cost of full offline support.
 
@@ -470,7 +483,7 @@ Major-version bumps across the entire React + framework toolchain, performed in 
 ---
 
 ### Phase 38: Phase 6 — Rust/WASM Mesh-Forge
-> **Status:** Complete | **Date:** April 10, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_10_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 Replaced the JavaScript hot path of the mesh-forge web worker with a Rust crate compiled to WebAssembly via `wasm-bindgen`. The browser now parses million-triangle STL files with native-code speed.
 
@@ -498,7 +511,7 @@ The browser-side number is the more dramatic one because the legacy path was rac
 ---
 
 ### Phase 39: Phase 8 — useOptimistic on /upload + Phase 3 INP Deep Fix
-> **Status:** Complete | **Date:** April 10, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_10_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 **`useOptimistic` on /upload.** The quote-confirmation render path is now optimistic: as soon as the customer clicks "Submit Quote", the success view paints with the in-flight payload while the API request is still on the wire. If the request fails the optimistic state rolls back and the customer gets a real error. The form feels instant even on slow connections.
 
@@ -512,7 +525,7 @@ INP on the homepage CTA dropped from 584 ms → comfortably under the 200 ms Cor
 ---
 
 ### Phase 40: Next.js 15 → 16 Major Upgrade
-> **Status:** Complete | **Date:** April 10, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_10_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 Major framework upgrade from `15.5.15` to `16.2.3` in a single coordinated commit, delivered without rollback.
 
@@ -524,14 +537,14 @@ Major framework upgrade from `15.5.15` to `16.2.3` in a single coordinated commi
 
 **TypeScript auto-migrations.** Next 16's codemod auto-rewrote `tsconfig.json` (`"jsx": "preserve"` → `"react-jsx"`) and added `.next/dev/types/**/*.ts` to the includes. Accepted in a separate commit.
 
-**Cache Components deferred.** Next 16's Cache Components feature (`cacheComponents: true` + `'use cache'` directives) is the upstream replacement for the canceled `experimental.ppr`. Opt-in is **deferred** (twice now) because it's incompatible with `runtime = 'edge'` on API routes — and two routes (`/api/quote/estimate`, `/api/vitals`) intentionally use the edge runtime for cold-start TTFB. There is no per-route runtime replacement yet (tracked at vercel/next.js#84894). The Phase 35 Suspense streaming already delivers the user-perceived TTFB win without it.
+**Cache Components deferred.** ![Deferred](https://img.shields.io/badge/STATUS-DEFERRED-8B0000?style=flat-square&labelColor=0D0D0D) Next 16's Cache Components feature (`cacheComponents: true` + `'use cache'` directives) is the upstream replacement for the canceled `experimental.ppr`. Opt-in is **deferred** (twice now) because it's incompatible with `runtime = 'edge'` on API routes — and two routes (`/api/quote/estimate`, `/api/vitals`) intentionally use the edge runtime for cold-start TTFB. There is no per-route runtime replacement yet (tracked at vercel/next.js#84894). The Phase 35 Suspense streaming already delivers the user-perceived TTFB win without it.
 
 **`.nvmrc` pinned to 20.19.0** so the Vercel build environment matches local development.
 
 ---
 
 ### Phase 41: 3D Viewer Silhouette Bug Fix — STLLoader Normal Recompute
-> **Status:** Complete | **Date:** April 10, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_10_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 A real customer-facing visual bug surfaced after Phase 38: million-triangle sculpts were rendering as flat grey silhouettes in the `/upload` viewer, even with the new decimation cap and Rust path. Took five wrong-layer fix attempts before the actual cause was identified.
 
@@ -565,7 +578,7 @@ Applied to **both** the primary STL load path and the GLB-fallback STL reload pa
 ---
 
 ### Phase 42: SEO Cleanup + ESLint Migration + Polish Batch
-> **Status:** Complete | **Date:** April 10, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_10_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 A consolidation pass that bundled five smaller follow-ups into a single deploy.
 
@@ -582,7 +595,7 @@ A consolidation pass that bundled five smaller follow-ups into a single deploy.
 ---
 
 ### Phase 43: Phase 5 Housekeeping — ESLint Cleanup, Suspense Streaming, Deferred Work
-> **Status:** Complete | **Date:** April 10, 2026
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-FF4500?style=for-the-badge&labelColor=0D0D0D) ![Date](https://img.shields.io/badge/DATE-April_10_2026-8B0000?style=for-the-badge&labelColor=0D0D0D)
 
 The closeout pass for the Forge Velocity Protocol. Four discrete housekeeping items rolled into one commit.
 
@@ -603,11 +616,11 @@ After the ignore fix the remaining real errors were:
 
 **Deprecated Clerk env var.** `.env` had a stale `NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL` from before the Clerk v5→v6 redirect-API rename. Replaced with the new `NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL` and `NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL`.
 
-**Cache Components opt-in (round 2): deferred.** Tried again to enable `cacheComponents: true` and ran into the same edge-runtime blocker — the flag rejects `runtime = 'edge'` on API routes globally, not just on pages, with no per-route replacement. Two routes (`/api/quote/estimate`, `/api/vitals`) intentionally use the edge runtime for cold-start TTFB and would regress if they were forced back to Node. Deferred until Vercel ships per-route runtime control. Documented in `next.config.js` with a link to vercel/next.js#84894.
+**Cache Components opt-in (round 2).** ![Deferred](https://img.shields.io/badge/STATUS-DEFERRED-8B0000?style=flat-square&labelColor=0D0D0D) Tried again to enable `cacheComponents: true` and ran into the same edge-runtime blocker — the flag rejects `runtime = 'edge'` on API routes globally, not just on pages, with no per-route replacement. Two routes (`/api/quote/estimate`, `/api/vitals`) intentionally use the edge runtime for cold-start TTFB and would regress if they were forced back to Node. Deferred until Vercel ships per-route runtime control. Documented in `next.config.js` with a link to vercel/next.js#84894.
 
 ---
 
-## Forge Velocity Protocol — Complete Before/After
+## 🚀 Forge Velocity Protocol — Complete Before/After
 
 The Forge Velocity Protocol shipped **12 production deploys** across two days (April 9–10, 2026) with **zero rollbacks**. The full legacy → current state:
 
@@ -672,18 +685,18 @@ The legacy `/showcase` page took **~29 seconds** to paint on mobile and shipped 
 
 ---
 
-## Live Site
+## 🌐 Live Site
 
 **[sinisterprintworks.net](https://sinisterprintworks.net)**
 
 ---
 
-## Source Code
+## 🔒 Source Code
 
 The website source code is maintained in a **private repository** with invitation-only access. This public repository serves as a transparent build log and portfolio reference.
 
 ---
 
-## Contact
+## 📬 Contact
 
 For business inquiries or collaboration, visit [sinisterprintworks.net](https://sinisterprintworks.net).
